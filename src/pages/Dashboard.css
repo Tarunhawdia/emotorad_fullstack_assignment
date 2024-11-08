@@ -169,22 +169,21 @@
 
 /* Specific box color themes */
 .box-revenue .icon-circle {
-  background-color: #4caf50; /* Light green for revenue */
+  background-color: #4caf50;
 }
 
 .box-transactions .icon-circle {
-  background-color: #ffc107; /* Light yellow for transactions */
+  background-color: #ffc107;
 }
 
 .box-likes .icon-circle {
-  background-color: #ff4081; /* Light pink for likes */
+  background-color: #ff4081;
 }
 
 .box-users .icon-circle {
-  background-color: #9c27b0; /* Light purple for users */
+  background-color: #9c27b0;
 }
 
-/* Icon styling inside circle */
 .icon {
   font-size: 1.2rem;
   margin: 0;
@@ -203,7 +202,7 @@
 
 /* Circle styling specifically for Add Profile */
 .gray-circle {
-  background-color: #e0e0e0; /* Light gray background for circle */
+  background-color: #e0e0e0;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -283,4 +282,131 @@
 .product-percentage {
   color: #666;
   font-size: 0.9rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #333;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #e0e0e0;
+}
+
+.modal-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  background: #f0f0f0;
+  border-radius: 8px;
+  border: none;
+}
+
+.tab.active {
+  color: #fff;
+  background: #007bff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.form input::placeholder {
+  color: #999;
+}
+
+.next-btn,
+.back-btn,
+.done-btn {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.back-btn {
+  background-color: #6c757d;
+}
+
+.done-btn {
+  background-color: #28a745;
+}
+
+.form .back-btn,
+.form .done-btn {
+  margin-top: 0;
+}
+
+.done-btn,
+.back-btn {
+  width: 48%;
+}
+
+.back-btn {
+  margin-right: 4%;
 }

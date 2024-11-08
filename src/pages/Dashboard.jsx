@@ -47,6 +47,16 @@ const Dashboard = () => {
   const handleMenuClick = (section) => {
     setSelectedSection(section);
   };
+  const [modalVisible, setModalVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("basic");
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
     <div className="dashboard-container">
@@ -187,9 +197,73 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="box" id="add_profile">
-              <button className="icon-button gray-circle">+</button>
+              <button className="icon-button gray-circle" onClick={toggleModal}>
+                +
+              </button>
               <p className="add-profile-text">Add Profile</p>
             </div>
+            {/* Modal */}
+            {modalVisible && (
+              <div className="modal-overlay">
+                <div className="modal-box">
+                  <button className="close-button" onClick={toggleModal}>
+                    ×
+                  </button>
+                  <h2>Add New Profile</h2>
+                  <div className="tabs">
+                    <button
+                      className={`tab ${activeTab === "basic" ? "active" : ""}`}
+                      onClick={() => handleTabChange("basic")}
+                    >
+                      Basic Details
+                    </button>
+                    <button
+                      className={`tab ${
+                        activeTab === "socials" ? "active" : ""
+                      }`}
+                      onClick={() => handleTabChange("socials")}
+                    >
+                      Socials
+                    </button>
+                  </div>
+
+                  {/* Content based on active tab */}
+                  {activeTab === "basic" ? (
+                    <div className="form">
+                      <input type="text" placeholder="Name" />
+                      <input type="email" placeholder="Email" />
+                      <input type="tel" placeholder="Phone" />
+                      <button
+                        className="next-btn"
+                        onClick={() => handleTabChange("socials")}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="form">
+                      <input
+                        type="text"
+                        placeholder="Instagram Link (Optional)"
+                      />
+                      <input
+                        type="text"
+                        placeholder="YouTube Link (Optional)"
+                      />
+                      <button
+                        className="back-btn"
+                        onClick={() => handleTabChange("basic")}
+                      >
+                        Back
+                      </button>
+                      <button className="done-btn" onClick={toggleModal}>
+                        Done
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
