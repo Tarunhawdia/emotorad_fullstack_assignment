@@ -106,25 +106,29 @@ const Dashboard = () => {
               <div className="icon-circle">
                 <FontAwesomeIcon icon={faDollarSign} className="icon" />
               </div>
-              Total Revenue
+              Total Revenues
+              <h3>$ 0.0 </h3>
             </div>
             <div className="box box-transactions">
               <div className="icon-circle">
                 <FontAwesomeIcon icon={faExchangeAlt} className="icon" />
               </div>
               Total Transactions
+              <h3>0</h3>
             </div>
             <div className="box box-likes">
               <div className="icon-circle">
                 <FontAwesomeIcon icon={faThumbsUp} className="icon" />
               </div>
               Total Likes
+              <h3>0</h3>
             </div>
             <div className="box box-users">
               <div className="icon-circle">
                 <FontAwesomeIcon icon={faUser} className="icon" />
               </div>
               Total Users
+              <h3>0</h3>
             </div>
           </div>
 
