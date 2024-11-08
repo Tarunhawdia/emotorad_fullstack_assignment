@@ -10,6 +10,8 @@ import {
   faBell,
   faUser,
   faSearch,
+  faDollarSign, // For Total Revenue
+  faThumbsUp, // For Total Likes
 } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 
@@ -74,10 +76,30 @@ const Dashboard = () => {
         <div className="dashboard-content">
           {/* Row 1 - Four Boxes */}
           <div className="row row-1">
-            <div className="box">Total Revenue</div>
-            <div className="box">Total Transactions</div>
-            <div className="box">Total Likes</div>
-            <div className="box">Total Users</div>
+            <div className="box box-revenue">
+              <div className="icon-circle">
+                <FontAwesomeIcon icon={faDollarSign} className="icon" />
+              </div>
+              Total Revenue
+            </div>
+            <div className="box box-transactions">
+              <div className="icon-circle">
+                <FontAwesomeIcon icon={faExchangeAlt} className="icon" />
+              </div>
+              Total Transactions
+            </div>
+            <div className="box box-likes">
+              <div className="icon-circle">
+                <FontAwesomeIcon icon={faThumbsUp} className="icon" />
+              </div>
+              Total Likes
+            </div>
+            <div className="box box-users">
+              <div className="icon-circle">
+                <FontAwesomeIcon icon={faUser} className="icon" />
+              </div>
+              Total Users
+            </div>
           </div>
 
           {/* Row 2 - One Box */}
@@ -88,7 +110,10 @@ const Dashboard = () => {
           {/* Row 3 - Two Boxes */}
           <div className="row row-3">
             <div className="box">Top Products</div>
-            <div className="box">Add Profile</div>
+            <div className="box" id="add_profile">
+              <button className="icon-button gray-circle">+</button>
+              <p className="add-profile-text">Add Profile</p>
+            </div>
           </div>
         </div>
       </div>
