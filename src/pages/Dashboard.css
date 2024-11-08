@@ -217,7 +217,7 @@
 .plus-sign {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #666; /* Darker gray color for the plus sign */
+  color: #666;
 }
 
 /* Text styling for Add Profile */
@@ -241,4 +241,46 @@
   color: #333;
   font-size: 1.2rem;
   text-align: center;
+}
+
+.box-heading {
+  margin: 0;
+}
+
+#top_product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.top-products-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.product-item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.product-percentage {
+  color: #666;
+  font-size: 0.9rem;
 }

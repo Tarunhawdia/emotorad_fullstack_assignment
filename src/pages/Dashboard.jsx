@@ -23,12 +23,22 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
+
 const data = [
   { name: "Week 1", Guest: 200, User: 400 },
   { name: "Week 2", Guest: 150, User: 350 },
   { name: "Week 3", Guest: 300, User: 200 },
   { name: "Week 4", Guest: 250, User: 450 },
+];
+
+const productData = [
+  { name: "Basic Tees", value: 40, color: "#32CD32" }, // Light green
+  { name: "Custom Short Pants", value: 55, color: "#FFD700" }, // Light yellow
+  { name: "Super Hoodies", value: 5, color: "#FF6347" }, // Light red
 ];
 
 const Dashboard = () => {
@@ -121,6 +131,7 @@ const Dashboard = () => {
           {/* Row 2 - One Box */}
           <div className="row row-2">
             <div className="box full-width">
+              <h2 className="box-heading">Activities</h2>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={data}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -140,7 +151,37 @@ const Dashboard = () => {
 
           {/* Row 3 - Two Boxes */}
           <div className="row row-3">
-            <div className="box">Top Products</div>
+            <div className="box" id="top_product">
+              <h3 className="box-heading">Top Products</h3>
+              <div className="top-products-content">
+                <PieChart width={120} height={120}>
+                  <Pie
+                    data={productData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={35}
+                    outerRadius={55}
+                    dataKey="value"
+                    startAngle={90}
+                    endAngle={450}
+                  >
+                    {productData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                </PieChart>
+                <div className="product-details">
+                  {productData.map((product) => (
+                    <div className="product-item" key={product.name}>
+                      <span className="product-name">{product.name}</span>
+                      <span className="product-percentage">
+                        {product.value}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="box" id="add_profile">
               <button className="icon-button gray-circle">+</button>
               <p className="add-profile-text">Add Profile</p>
