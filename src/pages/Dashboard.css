@@ -1,0 +1,138 @@
+/* src/pages/Dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 20%;
+  background-color: rgb(70, 70, 235);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 12px;
+}
+
+.sidebar-heading {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.sidebar-bottom ul {
+  list-style: none;
+  padding: 0;
+}
+
+.main-content {
+  width: 80%;
+  padding: 20px;
+  background-color: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.navbar-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-search {
+  position: relative;
+}
+
+.navbar-search input {
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+/* Row-specific heights */
+.row-1 {
+  display: flex;
+  gap: 20px;
+  height: 20%;
+  justify-content: space-between;
+}
+
+.row-2 {
+  display: flex;
+  height: 40%; /* 40% of the height for the second row */
+}
+
+.row-3 {
+  display: flex;
+  gap: 20px;
+  height: 30%;
+  justify-content: space-between;
+}
+
+/* Box styling */
+.box {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Make the Activity box full-width in row 2 */
+.row-2 .full-width {
+  width: 100%;
+}
