@@ -14,6 +14,22 @@ import {
   faThumbsUp, // For Total Likes
 } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+const data = [
+  { name: "Week 1", Guest: 200, User: 400 },
+  { name: "Week 2", Guest: 150, User: 350 },
+  { name: "Week 3", Guest: 300, User: 200 },
+  { name: "Week 4", Guest: 250, User: 450 },
+];
 
 const Dashboard = () => {
   const [selectedSection, setSelectedSection] = useState("Dashboard");
@@ -104,7 +120,22 @@ const Dashboard = () => {
 
           {/* Row 2 - One Box */}
           <div className="row row-2">
-            <div className="box full-width">Activity</div>
+            <div className="box full-width">
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={data}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis
+                    domain={[0, 500]}
+                    ticks={[0, 100, 200, 300, 400, 500]}
+                  />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="Guest" fill="#FF6347" barSize={50} />
+                  <Bar dataKey="User" fill="#32CD32" barSize={50} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Row 3 - Two Boxes */}
