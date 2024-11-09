@@ -1,27 +1,35 @@
 // src/pages/Login.js
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Add this import
 import SocialLinks from "../components/SocialLinks";
 import "./Login.css";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Placeholder for actual authentication logic
-    console.log("Logged in successfully");
-    navigate("/dashboard");
-  };
-
-  const handleGoogleLoginSuccess = (response) => {
-    console.log(response);
-    // Navigate to dashboard after successful Google login
-    navigate("/dashboard");
-  };
-
-  const handleGoogleLoginFailure = (error) => {
-    console.error(error);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login failed:", error);
+      if (error.response && error.response.status === 400) {
+        alert("Invalid credentials");
+      } else {
+        alert("An error occurred. Please try again.");
+      }
+    }
   };
 
   return (
@@ -37,28 +45,26 @@ const Login = () => {
         <div className="form-container">
           <h2>Sign In</h2>
           <h3>Sign in to your account</h3>
-          {/* Google Sign-In Button */}
-          <div className="google-login">
-            <h3>Google Sign-In Button</h3>
-            {/* Google login functionality is disabled for now */}
-            {/* <GoogleLogin
-                onSuccess={handleGoogleLoginSuccess}
-                onError={handleGoogleLoginFailure}
-                useOneTap
-              /> */}
-          </div>
           <form onSubmit={handleLogin}>
             <div className="form-group">
               <label htmlFor="email">Email address</label>
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" name="password" required />
-            </div>
-
-            <div className="forgot-password">
-              <a href="/forgot-password">Forgot Password?</a>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
 
             <button type="submit">Login</button>
