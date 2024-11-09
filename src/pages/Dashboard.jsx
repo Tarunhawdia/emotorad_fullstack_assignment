@@ -1,5 +1,5 @@
 // src/pages/Dashboard.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTachometerAlt,
@@ -43,12 +43,14 @@ const productData = [
 
 const Dashboard = () => {
   const [selectedSection, setSelectedSection] = useState("Dashboard");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("basic");
 
   const handleMenuClick = (section) => {
     setSelectedSection(section);
   };
-  const [modalVisible, setModalVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState("basic");
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -56,6 +58,24 @@ const Dashboard = () => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserName(user.name);
+    }
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  // Handle Logout
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return (
@@ -104,7 +124,17 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faSearch} className="search-icon" />
             </div>
             <FontAwesomeIcon icon={faBell} className="icon" />
-            <FontAwesomeIcon icon={faUser} className="icon" />
+            <div className="navbar-user" onClick={toggleDropdown}>
+              <FontAwesomeIcon icon={faUser} className="icon" />
+              {isDropdownOpen && (
+                <div className="dropdown-menu">
+                  <div className="dropdown-item">{userName}</div>
+                  <button className="dropdown-item" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
